@@ -11,6 +11,15 @@ link ivalue
 link usage
 link strings
 
+#Notes for future stuff:
+#file names in output
+#print and view code in window
+#BETTER CHECK FOR Q23
+#Q23 OMIT AT CERTAIN PLACES?
+#switch between codes within prog
+#ui IVIB
+#x y scan sim
+
 procedure main(args)
 
    in1 := open(args[1]) | stop("*** cannot open file 1")
@@ -36,7 +45,7 @@ yyy := args[3]
 
 ######################################
 
-   in2 := open(args[4]) | stop("*** cannot open file 1")
+   in2 := open(args[4]) | stop("*** cannot open file 2")
 
 xxx1 := args[5]
 yyy1 := args[6]
@@ -57,7 +66,7 @@ yyy1 := args[6]
 
 #######################################
 
-   in3 := open(args[7]) | stop("*** cannot open file 1")
+   in3 := open(args[7]) | stop("*** cannot open file 3")
 
 xxx2 := args[8]
 yyy2 := args[9]
@@ -78,7 +87,7 @@ yyy2 := args[9]
 
 ######################################
 
-   in4 := open(args[10]) | stop("*** cannot open file 1")
+   in4 := open(args[10]) | stop("*** cannot open file 4")
 
 xxx3 := args[11]
 yyy3 := args[12]
@@ -114,25 +123,45 @@ cube08(f,g)
 cube09(i,j)
 cube10(l,m)
 
+Fg("orange")
+
 WWrite("Total Entry 1")
 WWrite(c)
 WWrite(e)
 WWrite(d)
+
+Fg("red")
+if d <:= 1 then WWrite("WARNING: entry 1")
+
+Fg("orange")
 
 WWrite("Total Entry 2")
 WWrite(f)
 WWrite(h)
 WWrite(g)
 
+Fg("red")
+if g <:= 1 then WWrite("WARNING: entry 2")
+
+Fg("orange")
+
 WWrite("Total Entry 3")
 WWrite(i)
 WWrite(k)
 WWrite(j)
 
+Fg("red")
+if j <:= 1 then WWrite("WARNING: entry 3")
+
+Fg("orange")
+
 WWrite("Total Entry 4")
 WWrite(l)
 WWrite(n)
 WWrite(m)
+
+Fg("red")
+if m <:= 1 then WWrite("WARNING: entry 4")
 
        repeat {
 
@@ -174,10 +203,16 @@ w := Active() | stop("Active fails")
               exit()
               }
 "\?": { 
-              Notice("\] = Erase area, - = Timestamp, Z = Save Image, , = Open Image, @ = Exit")
+              Notice("\] = Erase area, - = Timestamp, Z = Save Image, , = Open Image, ; = Annotation, @ = Exit")
               }
 "\,": { 
               openImage()
+  }
+"\\": {      
+              inputprompt()
+   }
+"\;": {
+              textin01()
                       
 	}
      }
@@ -315,6 +350,21 @@ WOpen("label=Gscan01", "size=50,50","bg=black","linewidth=1","fg=orange")
 end
 
 ########################################################
+
+
+procedure textin01()
+
+        WAttrib("dx=1", "dy=1")
+
+        Fg("green")
+
+        WAttrib("dx=1", "dy=1")
+        WWrite("annotation:")
+        s := WRead()
+        WWrite("note:",image(s))
+#WDone()
+
+end
 
 #END OF PROGRAM####################
 
