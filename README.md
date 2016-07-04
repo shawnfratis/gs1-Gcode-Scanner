@@ -1,6 +1,7 @@
 # gs1-Gcode-Scanner
 Program to scan G-code files and check for command quantities and potential errors
-Still under development.
+
+Usable, but still under development.
 
 This is a quick reference for using GS1 (Gcode Scan 1). This program is for scanning multiple G-code files to assess quantity of various commands and potentially catch errors.
 
